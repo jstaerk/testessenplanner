@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html lang="de">
+<head>
+<title>Usability Testessen Laufzettel</title>
+<meta charset="utf-8" />
+<style>
+@font-face {
+	font-family: Bitter;
+	src: url('bitter.ttf')
+}
+@font-face {
+	font-family: Shadows;
+	src: url('shadows.ttf')
+}
+@page {
+   size: 101mm 54mm landscape;
+   margin: 5mm 5mm 5mm 1mm;
+}
+.content {
+	padding-left:40px;
+	page-break-after: always;
+}
+.runden {
+	list-style-type: none;
+	padding:0px;
+}
+
+.bigger {
+	font-size:14pt;
+}
+.written {
+	font-size:13pt;
+	font-family:shadows;
+	color:#f23e0e
+}
+.printed {
+	font-size:13pt;
+	font-weight:bold;
+	color:#6f6e6f;
+	font-family:Bitter;
+}
+.station {
+	float:left;
+}
+.maxsize {
+	max-width:100%;
+	max-height:100%
+}
+.runde {
+	font-size:13pt;
+	font-weight:bold;
+	color:#6f6e6f;
+	float:left;
+	width:1em;
+	padding-top: 4px;
+	font-family:Bitter;
+}
+.clear {
+	clear:both;
+}
+.breakPageBefore {
+  page-break-before: always;
+}
+.center {
+	text-align: center;
+}
+.head {
+
+}
+
+</style>
+</head>
+<body>
+{% for tester in tests %}
+
+<img src='logo-UT-Frankfurt.svg' class="maxsize breakPageBefore" alt="Usability Testessen Logo"/>
+   
+    <br class='clear'/>
+    <div class='content'>
+	<div class='bigger center'> <span class='printed'>Laufzettel</span> <br class='clear'/><span class='written'>{{tester.name}}</span></div>
+	<ul class='runden'>
+
+        <li class='clear'>
+            <div class='head runde'>Runde</div>
+					<!--div class='head station written'> Station</div-->
+        </li>
+
+        {% for assignment in tester.assignments %}
+
+		<li class='clear'>
+			<div class='runde'>{{assignment.round.index}}.</div>
+                <div class='station written'> {{assignment.station.name}}</div>
+		</li>
+	
+        {% endfor %}
+	</ul>
+</div>
+{% endfor %}
+</body>
+</html>
