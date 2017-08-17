@@ -71,6 +71,8 @@ public class Judge implements EasyScoreCalculator<Testplan> {
 							}
 							softScore += utility;// we have a test which should be added to the total benefit :-)
 						}
+						// prefer tester with low indices
+						softScore -= theTester.getTester();
 
 					}
 
