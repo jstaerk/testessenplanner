@@ -139,8 +139,75 @@ public class Laufzettel {
 					+ "<html lang='de'>"
 					+ "<head>"
 					+ "<title>Usability Testessen Laufzettel</title>"
-					+ "<meta charset='utf-8' />"
-					+ "</head>"
+					+ "<meta charset='utf-8' /> " +
+					  "<style>\n" +
+					  "@font-face {\n" +
+					  "\tfont-family: Bitter;\n" +
+					  "\tsrc: url('Bitter regular.ttf')\n" +
+					  "}\n" +
+					  "@font-face {\n" +
+					  "\tfont-family: Shadows;\n" +
+					  "\tsrc: url('Shadows Into Light.ttf')\n" +
+					  "}\n" +
+					  "@page {\n" +
+					  "   size: 101mm 54mm landscape;\n" +
+					  "   margin: 5mm 5mm 5mm 1mm;\n" +
+					  "}\n" +
+					  ".content {\n" +
+					  "\tpadding-left:40px;\n" +
+					  "\tpage-break-after: always;\n" +
+					  "}\n" +
+					  ".runden {\n" +
+					  "\tlist-style-type: none;\n" +
+					  "\tpadding:0px;\n" +
+					  "}\n" +
+					  "\n" +
+					  ".bigger {\n" +
+					  "\tfont-size:14pt;\n" +
+					  "}\n" +
+					  ".written {\n" +
+					  "\tfont-size:13pt;\n" +
+					  "\tfont-family:shadows;\n" +
+					  "\tcolor:#f23e0e\n" +
+					  "}\n" +
+					  ".printed {\n" +
+					  "\tfont-size:13pt;\n" +
+					  "\tfont-weight:bold;\n" +
+					  "\tcolor:#6f6e6f;\n" +
+					  "\tfont-family:Bitter;\n" +
+					  "}\n" +
+					  ".station {\n" +
+					  "\tfloat:left;\n" +
+					  "}\n" +
+					  ".maxsize {\n" +
+					  "\tmax-width:100%;\n" +
+					  "\tmax-height:100%\n" +
+					  "}\n" +
+					  ".runde {\n" +
+					  "\tfont-size:13pt;\n" +
+					  "\tfont-weight:bold;\n" +
+					  "\tcolor:#6f6e6f;\n" +
+					  "\tfloat:left;\n" +
+					  "\twidth:1em;\n" +
+					  "\tpadding-top: 4px;\n" +
+					  "\tfont-family:Bitter;\n" +
+					  "}\n" +
+					  ".clear {\n" +
+					  "\tclear:both;\n" +
+					  "}\n" +
+					  ".breakPageBefore {\n" +
+					  "  page-break-before: always;\n" +
+					  "}\n" +
+					  ".center {\n" +
+					  "\ttext-align: center;\n" +
+					  "}\n" +
+					  ".head {\n" +
+					  "\n" +
+					  "}\n" +
+					  "\n" +
+					  "</style>\n" +
+					  "</head>\n"
+
 					+ "<body>"
 					+ "{% for tester in tests %}"
 					+ "    <br/>"
