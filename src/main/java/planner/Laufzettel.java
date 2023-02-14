@@ -12,9 +12,11 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.prefs.Preferences;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import gui.Settings;
 import org.jtwig.JtwigModel;
 import org.jtwig.JtwigTemplate;
 
@@ -277,7 +279,10 @@ public class Laufzettel {
 		FileOutputStream fos;
 		try {
 			fos = new FileOutputStream("laufzettel.html");
-			model.with("pageSize","101mm 54mm landscape");
+			Preferences prefs = Preferences.userRoot().node(Settings.class.getName());
+			String ID1 = "pagesize";
+			String pagesize=prefs.get(ID1, "101mm 54mm landscape");
+			model.with("pageSize",pagesize);
 			model.with("tests",testsNamedIndex);
 			template.render(model, fos);
 		} catch (FileNotFoundException e) {
