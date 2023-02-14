@@ -95,10 +95,9 @@ public class Event extends JFrame {
 
                 sdc.setEasyScoreCalculatorClass(Judge.class);
 
-
                 TerminationConfig tc = new TerminationConfig();
+                tc.setUnimprovedMillisecondsSpentLimit(10000l);
 
-                tc.setSecondsSpentLimit(10L);
                 SolverFactory<Testplan> solverFactory = SolverFactory.create(new SolverConfig()
                         .withSolutionClass(Testplan.class)
                         .withEntityClasses(Test.class)
