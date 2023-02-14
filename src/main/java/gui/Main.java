@@ -8,6 +8,7 @@ public class Main extends JFrame {
     private JButton Laufzettel;
     private JPanel panel1;
     private JButton namensschildButton;
+    private JButton einstellungenButton;
 
     public Main() {
 
@@ -28,6 +29,12 @@ public class Main extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Event ev=new Event();
+            }
+        });
+        einstellungenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               Settings s=new Settings();
             }
         });
     }

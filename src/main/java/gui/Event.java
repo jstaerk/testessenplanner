@@ -12,6 +12,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,6 +26,9 @@ public class Event extends JFrame {
     private JTextArea textAreaRounds;
     private JTextArea textAreaStations;
     private JTextArea textAreaTesters;
+    private JLabel lblCountRounds;
+    private JLabel lblCountStations;
+    private JLabel lblCountTesters;
 
 
     private Testplan createRessourcesToOptimize() {
@@ -66,7 +71,7 @@ public class Event extends JFrame {
 
         setTitle("Testessen");
         setSize(450,450);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         setVisible(true);
         setContentPane(jPanel);
         final JFrame theFrame=this;
@@ -135,6 +140,30 @@ public class Event extends JFrame {
             }
 
 
+        });
+        textAreaRounds.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+
+                lblCountRounds.setText(Integer.toString(textAreaRounds.getText().split("\n").length));
+            }
+        });
+        textAreaStations.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+
+                lblCountStations.setText(Integer.toString(textAreaStations.getText().split("\n").length));
+            }
+        });
+        textAreaTesters.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+
+                lblCountTesters.setText(Integer.toString(textAreaTesters.getText().split("\n").length));
+            }
         });
     }
 }

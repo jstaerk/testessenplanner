@@ -150,8 +150,8 @@ public class Laufzettel {
 					  "\tsrc: url('Shadows Into Light.ttf')\n" +
 					  "}\n" +
 					  "@page {\n" +
-					  "   size: 101mm 54mm landscape;\n" +
-					  "   margin: 5mm 5mm 5mm 1mm;\n" +
+							  "   size: {{pageSize}};\n" +
+							  "   margin: 5mm 5mm 5mm 1mm;\n" +
 					  "}\n" +
 					  ".content {\n" +
 					  "\tpadding-left:40px;\n" +
@@ -277,6 +277,7 @@ public class Laufzettel {
 		FileOutputStream fos;
 		try {
 			fos = new FileOutputStream("laufzettel.html");
+			model.with("pageSize","101mm 54mm landscape");
 			model.with("tests",testsNamedIndex);
 			template.render(model, fos);
 		} catch (FileNotFoundException e) {
