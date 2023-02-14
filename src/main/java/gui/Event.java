@@ -70,11 +70,11 @@ public class Event extends JFrame {
     public Event() {
 
         setTitle("Testessen");
-        setSize(450,450);
+        setSize(450, 450);
         setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         setVisible(true);
         setContentPane(jPanel);
-        final JFrame theFrame=this;
+        final JFrame theFrame = this;
         btnPlan.addActionListener(new ActionListener() {
 
             @Override
@@ -88,27 +88,24 @@ public class Event extends JFrame {
                 App.rounds = new ArrayList<>(Arrays.asList(textAreaRounds.getText().split("\n")));
 
 
-
-                // build the solver
-                SolverFactory<Testplan> solverFactory = SolverFactory.createEmpty();
-
-                SolverConfig sc = solverFactory.getSolverConfig();
-                sc.setSolutionClass(Testplan.class);
-
                 ArrayList<Class> entities = new ArrayList<Class>();
                 entities.add(Test.class);
-                sc.setEntityClassList((List) entities);
+
                 ScoreDirectorFactoryConfig sdc = new ScoreDirectorFactoryConfig();
 
-                sdc.setScoreDefinitionType(ScoreDefinitionType.HARD_SOFT);
                 sdc.setEasyScoreCalculatorClass(Judge.class);
-                sc.setScoreDirectorFactoryConfig(sdc);
+
+
                 TerminationConfig tc = new TerminationConfig();
+
                 tc.setSecondsSpentLimit(10L);
+                SolverFactory<Testplan> solverFactory = SolverFactory.create(new SolverConfig()
+                        .withSolutionClass(Testplan.class)
+                        .withEntityClasses(Test.class)
+                        .withScoreDirectorFactory(sdc)
+                        .withTerminationConfig(tc));
+                Solver<Testplan> solver = solverFactory.buildSolver();
 
-                sc.setTerminationConfig(tc);
-
-                Solver solver = solverFactory.buildSolver();
 
                 Testplan unsolvedLuggage = createRessourcesToOptimize();
 

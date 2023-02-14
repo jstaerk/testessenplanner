@@ -1,9 +1,10 @@
 package planner;
 
-import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
-import org.optaplanner.core.impl.score.director.easy.EasyScoreCalculator;
 
-public class Judge implements EasyScoreCalculator<Testplan> {
+import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
+import org.optaplanner.core.api.score.calculator.EasyScoreCalculator;
+
+public class Judge  implements EasyScoreCalculator<Testplan, HardSoftScore> {
 
 	/**
 	 * 

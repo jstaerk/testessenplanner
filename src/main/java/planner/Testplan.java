@@ -3,14 +3,12 @@ package planner;
 import java.util.Collection;
 import java.util.List;
 
-import org.optaplanner.core.api.domain.solution.PlanningEntityCollectionProperty;
-import org.optaplanner.core.api.domain.solution.PlanningSolution;
-import org.optaplanner.core.api.domain.solution.Solution;
+import org.optaplanner.core.api.domain.solution.*;
 import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
 @PlanningSolution
-public class Testplan implements Solution<HardSoftScore> {
+public class Testplan {
 
 	private long Id;
 	private List<Station> stationList;
@@ -29,6 +27,7 @@ public class Testplan implements Solution<HardSoftScore> {
 		return testList;
 	}
 
+	@PlanningScore
 	public HardSoftScore getScore() {
 		return score;
 	}
@@ -51,14 +50,6 @@ public class Testplan implements Solution<HardSoftScore> {
 
 	public void setId(long id) {
 		Id = id;
-	}
-
-	@Override
-	public Collection<? extends Object> getProblemFacts() {
-		/***
-		 * OptaPlanner requires it but we don't need/use this yet
-		 */
-		return null;
 	}
 
 }
