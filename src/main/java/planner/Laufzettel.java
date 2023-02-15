@@ -79,7 +79,7 @@ public class Laufzettel {
 	public void setTesters(ArrayList<String> allTesters) {
 		testers = allTesters;
 		ArrayList<Integer> emptyArrayList = new ArrayList<Integer>();
-		for (int roundIdx = 0; roundIdx < App.rounds.size(); roundIdx++) {
+		for (int roundIdx = 0; roundIdx < Testessen.rounds.size(); roundIdx++) {
 			emptyArrayList.add(-1);
 		}
 
@@ -256,7 +256,7 @@ public class Laufzettel {
 			}
 			
 			ArrayList runden=new ArrayList();
-			for (int roundIdx = 0; roundIdx < App.rounds.size(); roundIdx++) {
+			for (int roundIdx = 0; roundIdx < Testessen.rounds.size(); roundIdx++) {
 				
 				int station = get(testerIdx, roundIdx);
 				String currentStationsname = "Pause";
@@ -267,7 +267,7 @@ public class Laufzettel {
 					}
 				}
 
-				AssignmentModel ai=new AssignmentModel(new NamedIndexModel(roundIdx + 1, App.rounds.get(roundIdx)), new NamedIndexModel(station + 1, currentStationsname));
+				AssignmentModel ai=new AssignmentModel(new NamedIndexModel(roundIdx + 1, Testessen.rounds.get(roundIdx)), new NamedIndexModel(station + 1, currentStationsname));
 				runden.add(ai);
 			}
 			NamedIndexModel currentTesterNamedIndex=new NamedIndexModel(testerIdx + 1, currentTestername);
@@ -300,14 +300,14 @@ public class Laufzettel {
 		StringBuilder csv = new StringBuilder();
 		csv.append("Runde #;Runde Info;Tester #;Tester Name;Station #;Station Name;\n");
 		int roundIdx = 0;
-		for (roundIdx = 0; roundIdx < App.rounds.size(); roundIdx++) {
+		for (roundIdx = 0; roundIdx < Testessen.rounds.size(); roundIdx++) {
 			for (int testerIdx = 0; testerIdx < testers.size(); testerIdx++) {
 
 				int station = get(testerIdx, roundIdx);
 				int roundNr = roundIdx + 1;
 				int stationNr = station + 1;
 				int testerNr = testerIdx + 1;
-				csv.append(roundNr).append(";").append(App.rounds.get(roundIdx)).append(";").append(testerNr).append(";").append(App.testers.get(testerIdx)).append(";").append(stationNr).append(";").append(App.stations.get(station)).append(";\n");
+				csv.append(roundNr).append(";").append(Testessen.rounds.get(roundIdx)).append(";").append(testerNr).append(";").append(Testessen.testers.get(testerIdx)).append(";").append(stationNr).append(";").append(Testessen.stations.get(station)).append(";\n");
 
 			}
 		}
@@ -322,14 +322,14 @@ public class Laufzettel {
 		csv = new StringBuilder();
 		csv.append("Runde #;Runde Info;Station #;Station Name;Tester #;Tester Name;\n");
 
-		for (roundIdx = 0; roundIdx < App.rounds.size(); roundIdx++) {
+		for (roundIdx = 0; roundIdx < Testessen.rounds.size(); roundIdx++) {
 			for (int stationIdx = 0; stationIdx < stations.size(); stationIdx++) {
 				ArrayList<Integer> stationTesters = getTesterByStationRound(stationIdx, roundIdx);
 				int roundNr = roundIdx + 1;
 				int stationNr = stationIdx + 1;
 				for (Integer tester : stationTesters) {
 					int testerNr = tester + 1;
-					csv.append(roundNr).append(";").append(App.rounds.get(roundIdx)).append(";").append(stationNr).append(";").append(App.stations.get(stationIdx)).append(";").append(testerNr).append(";").append(App.testers.get(tester)).append(";\n");
+					csv.append(roundNr).append(";").append(Testessen.rounds.get(roundIdx)).append(";").append(stationNr).append(";").append(Testessen.stations.get(stationIdx)).append(";").append(testerNr).append(";").append(Testessen.testers.get(tester)).append(";\n");
 
 				}
 
@@ -393,7 +393,7 @@ public class Laufzettel {
 	 * @param solvedTestplan
 	 */
 	public void fromTestPlan(Testplan solvedTestplan) {
-		for (int roundIdx = 0; roundIdx < App.rounds.size(); roundIdx++) {
+		for (int roundIdx = 0; roundIdx < Testessen.rounds.size(); roundIdx++) {
 			for (Test process : solvedTestplan.getTestList()) {
 				if (process.getRound() == roundIdx) {
 					Station theStation = process.getStation();

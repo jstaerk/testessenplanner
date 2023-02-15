@@ -20,16 +20,9 @@ import javax.swing.*;
  * 
  * This software uses OptaPlanner to create a "Laufzettel" (routing slip) for
  * the testers of a usability-Testessen event (http://usability-testessen.de/)
- * 
- * build it with /opt/local/bin/mvn clean compile assembly:single
- * 
+ *
  */
 public class App {
-
-	public static ArrayList<String> testers;
-	public static ArrayList<String> stations;
-	public static ArrayList<String> rounds;
-	public static int maxNumTesterForStation = 5;
 
 
 	public static void main(String[] args) {

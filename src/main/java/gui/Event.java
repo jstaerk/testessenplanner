@@ -1,5 +1,7 @@
 package gui;
 
+import com.intellij.uiDesigner.core.GridConstraints;
+import com.intellij.uiDesigner.core.GridLayoutManager;
 import org.optaplanner.core.api.solver.Solver;
 import org.optaplanner.core.api.solver.SolverFactory;
 import org.optaplanner.core.config.score.definition.ScoreDefinitionType;
@@ -38,7 +40,7 @@ public class Event extends JFrame {
 
         List<Station> stationList = new ArrayList<Station>(2);
 
-        for (int i = 0; i < App.stations.size(); i++) {
+        for (int i = 0; i < Testessen.stations.size(); i++) {
             Station station1 = new Station();
             station1.setIndex(i);
             stationList.add(station1);
@@ -47,11 +49,11 @@ public class Event extends JFrame {
 
         theTestPlan.setStationList(stationList);
 
-        List<Test> testList = new ArrayList<Test>(App.testers.size());
+        List<Test> testList = new ArrayList<Test>(Testessen.testers.size());
 
-        for (int i = 0; i < App.testers.size(); i++) {
+        for (int i = 0; i < Testessen.testers.size(); i++) {
 
-            for (int j = 0; j < App.rounds.size(); j++) {
+            for (int j = 0; j < Testessen.rounds.size(); j++) {
 
                 Test aTest = new Test();
                 aTest.setLabel("Test " + j + " with tester " + i);
@@ -81,11 +83,11 @@ public class Event extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 theFrame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
-                App.stations = new ArrayList<>(Arrays.asList(textAreaStations.getText().split("\n")));
+                Testessen.stations = new ArrayList<>(Arrays.asList(textAreaStations.getText().split("\n")));
 
-                App.testers = new ArrayList<>(Arrays.asList(textAreaTesters.getText().split("\n")));
+                Testessen.testers = new ArrayList<>(Arrays.asList(textAreaTesters.getText().split("\n")));
 
-                App.rounds = new ArrayList<>(Arrays.asList(textAreaRounds.getText().split("\n")));
+                Testessen.rounds = new ArrayList<>(Arrays.asList(textAreaRounds.getText().split("\n")));
 
 
                 ArrayList<Class> entities = new ArrayList<Class>();
@@ -114,8 +116,8 @@ public class Event extends JFrame {
 
                 Testplan solvedLuggage = (Testplan) solver.getBestSolution();
                 Laufzettel l = new Laufzettel();
-                l.setTesters(App.testers);
-                l.setStations(App.stations);
+                l.setTesters(Testessen.testers);
+                l.setStations(Testessen.stations);
                 l.fromTestPlan(solvedLuggage);
 
                 // Display the result
@@ -132,6 +134,9 @@ public class Event extends JFrame {
                         ex.printStackTrace();
                     }
                 }
+                Testessen t = new Testessen();
+
+                t.printBadgesFromNames(Testessen.testers);
                 theFrame.setCursor(Cursor.getDefaultCursor());
             }
 
@@ -179,34 +184,34 @@ public class Event extends JFrame {
      */
     private void $$$setupUI$$$() {
         jPanel = new JPanel();
-        jPanel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(4, 3, new Insets(0, 0, 0, 0), -1, -1));
+        jPanel.setLayout(new GridLayoutManager(4, 3, new Insets(0, 0, 0, 0), -1, -1));
         btnPlan = new JButton();
         btnPlan.setText("Planen");
-        jPanel.add(btnPlan, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        jPanel.add(btnPlan, new GridConstraints(3, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JLabel label1 = new JLabel();
         label1.setText("Runden");
-        jPanel.add(label1, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        jPanel.add(label1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         textAreaRounds = new JTextArea();
-        jPanel.add(textAreaRounds, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
+        jPanel.add(textAreaRounds, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         final JLabel label2 = new JLabel();
         label2.setText("Stationen");
-        jPanel.add(label2, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        jPanel.add(label2, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         textAreaStations = new JTextArea();
-        jPanel.add(textAreaStations, new com.intellij.uiDesigner.core.GridConstraints(1, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
+        jPanel.add(textAreaStations, new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         final JLabel label3 = new JLabel();
         label3.setText("Tester");
-        jPanel.add(label3, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        jPanel.add(label3, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         textAreaTesters = new JTextArea();
-        jPanel.add(textAreaTesters, new com.intellij.uiDesigner.core.GridConstraints(2, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
+        jPanel.add(textAreaTesters, new GridConstraints(2, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         lblCountRounds = new JLabel();
         lblCountRounds.setText("");
-        jPanel.add(lblCountRounds, new com.intellij.uiDesigner.core.GridConstraints(0, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        jPanel.add(lblCountRounds, new GridConstraints(0, 2, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         lblCountStations = new JLabel();
         lblCountStations.setText("");
-        jPanel.add(lblCountStations, new com.intellij.uiDesigner.core.GridConstraints(1, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        jPanel.add(lblCountStations, new GridConstraints(1, 2, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         lblCountTesters = new JLabel();
         lblCountTesters.setText("");
-        jPanel.add(lblCountTesters, new com.intellij.uiDesigner.core.GridConstraints(2, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        jPanel.add(lblCountTesters, new GridConstraints(2, 2, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
     /**
@@ -215,4 +220,5 @@ public class Event extends JFrame {
     public JComponent $$$getRootComponent$$$() {
         return jPanel;
     }
+
 }

@@ -4,16 +4,9 @@ package planner;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 import org.optaplanner.core.api.score.calculator.EasyScoreCalculator;
 
+//determines how good a testplan is
 public class Judge  implements EasyScoreCalculator<Testplan, HardSoftScore> {
 
-	/**
-	 * 
-	 * A very simple implementation. The double loop can easily be removed by
-	 * using Maps as shown in
-	 * 
-	 * {@link CloudBalancingMapBasedEasyScoreCalculator#calculateScore(Testplan)}
-	 * .
-	 */
 
 	public HardSoftScore calculateScore(Testplan theTestplan) {
 
@@ -24,13 +17,13 @@ public class Judge  implements EasyScoreCalculator<Testplan, HardSoftScore> {
 	
 
 		Laufzettel l = new Laufzettel();
-		l.setStations(App.stations);
-		l.setTesters(App.testers);
+		l.setStations(Testessen.stations);
+		l.setTesters(Testessen.testers);
 
 		// es dürfen keine Stationen unbesetzt sein(?)
 		for (Station theStation : theTestplan.getStationList()) {
 
-			for (int roundIdx = 0; roundIdx < App.rounds.size(); roundIdx++) {
+			for (int roundIdx = 0; roundIdx < Testessen.rounds.size(); roundIdx++) {
 				for (Test theTester : theTestplan.getTestList()) {
 
 					if ((theStation != null) && (theTester.getStation() != null)
@@ -39,7 +32,7 @@ public class Judge  implements EasyScoreCalculator<Testplan, HardSoftScore> {
 
 						/* if this station is visited by another tester in the same round */
 						int numTestersOnStation = 0;
-						for (int currentTester = 0; currentTester < App.testers.size(); currentTester++) {
+						for (int currentTester = 0; currentTester < Testessen.testers.size(); currentTester++) {
 							if (currentTester == theTester.getTester()) {
 								numTestersOnStation++; // first tester
 							}
@@ -49,7 +42,7 @@ public class Judge  implements EasyScoreCalculator<Testplan, HardSoftScore> {
 							}
 
 						}
-						if (numTestersOnStation > App.maxNumTesterForStation) {
+						if (numTestersOnStation > Testessen.maxNumTesterForStation) {
 							hardScore -= 1;
 						}
 						/* 
@@ -82,7 +75,7 @@ public class Judge  implements EasyScoreCalculator<Testplan, HardSoftScore> {
 			}
 
 		}
-		return HardSoftScore.valueOf(hardScore, softScore);
+		return HardSoftScore.of(hardScore, softScore);
 
 	}
 }
