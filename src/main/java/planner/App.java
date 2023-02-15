@@ -12,6 +12,8 @@ import org.optaplanner.core.config.score.director.ScoreDirectorFactoryConfig;
 import org.optaplanner.core.config.solver.SolverConfig;
 import org.optaplanner.core.config.solver.termination.TerminationConfig;
 
+import javax.swing.*;
+
 /**
  * 
  * testessenPlanner 1.2 by Jochen Stärk <jstaerk@usegroup.de>, 2016-12-24.
@@ -31,7 +33,14 @@ public class App {
 
 
 	public static void main(String[] args) {
-		Main m=new Main();
+		JFrame frame=new JFrame("Testessen");
+		frame.setTitle("Testessen");
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+		frame.setContentPane(new Main().panel1);
+		frame.setSize(650,450);
+		//frame.pack();
+		frame.setVisible(true);
 
 	}
 
