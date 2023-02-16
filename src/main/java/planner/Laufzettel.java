@@ -25,8 +25,8 @@ public class Laufzettel {
      */
 
     private class NamedIndexModel {
-        int index;
-        String name;
+        public int index;
+        public String name;
 
         public NamedIndexModel(int index, String name) {
             super();
@@ -37,7 +37,7 @@ public class Laufzettel {
     }
 
     private class TesterModel extends NamedIndexModel {
-        ArrayList assignments;
+        public ArrayList assignments;
 
         public TesterModel(int index, String name, ArrayList assignments) {
             super(index, name);
@@ -47,8 +47,8 @@ public class Laufzettel {
     }
 
     private class AssignmentModel {
-        NamedIndexModel round;
-        NamedIndexModel station;
+        public NamedIndexModel round;
+        public NamedIndexModel station;
 
         public AssignmentModel(NamedIndexModel round, NamedIndexModel station) {
             super();

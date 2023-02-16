@@ -141,9 +141,6 @@ public class Testessen {
             context.put("pageSize", pagesize);
             context.put("testers", qnames);
 
-            QualifiedName qn=new QualifiedName("ABC def|Ghois");
-            context.put("qn", qn);
-            context.put("abc", "Testi");
 
             compiledTemplate.evaluate(fos, context);
 

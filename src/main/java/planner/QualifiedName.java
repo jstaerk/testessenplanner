@@ -14,6 +14,6 @@ public class QualifiedName {
         }
     }
 
-    String function;
-    String name;
+    public String function;
+    public String name;
 }
