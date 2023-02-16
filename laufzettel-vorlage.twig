@@ -1,19 +1,14 @@
-<!DOCTYPE HTML>
-<html lang="de">
-<head>
-<title>Usability Testessen Laufzettel</title>
-<meta charset="utf-8" />
-<style>
+<!DOCTYPE HTML><html lang='de'><head><title>Usability Testessen Laufzettel</title><meta charset='utf-8' /> <style>
 @font-face {
 	font-family: Bitter;
-	src: url('bitter.ttf')
+	src: url('Bitter regular.ttf')
 }
 @font-face {
 	font-family: Shadows;
-	src: url('shadows.ttf')
+	src: url('Shadows Into Light regular.ttf')
 }
 @page {
-   size: 101mm 54mm landscape;
+   size: {{pageSize}};
    margin: 5mm 5mm 5mm 1mm;
 }
 .content {
@@ -30,7 +25,7 @@
 }
 .written {
 	font-size:13pt;
-	font-family:shadows;
+	font-family:Shadows;
 	color:#f23e0e
 }
 .printed {
@@ -77,24 +72,22 @@
    
     <br class='clear'/>
     <div class='content'>
-	<div class='bigger center'> <span class='printed'>Laufzettel</span> <br class='clear'/><span class='written'>{{tester.name}}</span></div>
-	<ul class='runden'>
+    <div class='bigger center'> <span class='printed'>Laufzettel</span> <br class='clear'/><span class='written'>{{tester.name}}</span></div>
+    <ul class='runden'>
 
         <li class='clear'>
             <div class='head runde'>Runde</div>
-					<!--div class='head station written'> Station</div-->
+                    <!--div class='head station written'> Station</div-->
         </li>
 
         {% for assignment in tester.assignments %}
 
-		<li class='clear'>
-			<div class='runde'>{{assignment.round.index}}.</div>
+        <li class='clear'>
+            <div class='runde'>{{assignment.round.index}}.</div>
                 <div class='station written'> {{assignment.station.name}}</div>
-		</li>
-	
+        </li>
+    
         {% endfor %}
-	</ul>
+    </ul>
 </div>
-{% endfor %}
-</body>
-</html>
+{% endfor %}</body></html>
