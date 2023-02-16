@@ -2,18 +2,17 @@ package planner;
 
 import gui.Badge;
 import gui.Settings;
-import org.jtwig.JtwigModel;
-import org.jtwig.JtwigTemplate;
+import io.pebbletemplates.pebble.PebbleEngine;
+import io.pebbletemplates.pebble.template.PebbleTemplate;
 
 import java.awt.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.prefs.Preferences;
 
 public class Testessen {
@@ -128,24 +127,32 @@ public class Testessen {
                 e1.printStackTrace();
             }
         }
-        JtwigTemplate template = JtwigTemplate.fileTemplate(absoluteFilename);
-        JtwigModel model = JtwigModel.newModel();
-
-
-        FileOutputStream fos;
+        PebbleEngine engine = new PebbleEngine.Builder().build();
+        PebbleTemplate compiledTemplate = engine.getTemplate(absoluteFilename);
+        FileWriter fos;
         try {
-            fos = new FileOutputStream("badge.html");
+            fos = new FileWriter("badge.html");
             Preferences prefs = Preferences.userRoot().node(Settings.class.getName());
             String ID1 = "pagesize";
             String pagesize = prefs.get(ID1, "101mm 54mm landscape");
-            model.with("pageSize", pagesize);
 
 
-            model.with("testers", qnames);
-            template.render(model, fos);
+            Map<String, Object> context = new HashMap<>();
+            context.put("pageSize", pagesize);
+            context.put("testers", qnames);
+
+            QualifiedName qn=new QualifiedName("ABC def|Ghois");
+            context.put("qn", qn);
+            context.put("abc", "Testi");
+
+            compiledTemplate.evaluate(fos, context);
+
+
         } catch (FileNotFoundException ex) {
             // TODO Auto-generated catch block
             ex.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         try {
             Desktop.getDesktop().open(new File("badge.html"));

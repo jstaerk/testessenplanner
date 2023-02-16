@@ -1,24 +1,20 @@
 package planner;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.prefs.Preferences;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import gui.Settings;
-import org.jtwig.JtwigModel;
-import org.jtwig.JtwigTemplate;
+import io.pebbletemplates.pebble.PebbleEngine;
+import io.pebbletemplates.pebble.template.PebbleTemplate;
 
 public class Laufzettel {
     /**
@@ -250,8 +246,11 @@ public class Laufzettel {
             }
 
         }
-        JtwigTemplate template = JtwigTemplate.fileTemplate(absoluteFilename);
-        JtwigModel model = JtwigModel.newModel();
+
+
+        PebbleEngine engine = new PebbleEngine.Builder().build();
+        PebbleTemplate compiledTemplate = engine.getTemplate(absoluteFilename);
+
 
         ArrayList testsNamedIndex = new ArrayList<>();
 
@@ -283,16 +282,22 @@ public class Laufzettel {
 
         }
 
-        FileOutputStream fos;
+        FileWriter fos;
         try {
-            fos = new FileOutputStream("laufzettel.html");
+
+            fos = new FileWriter("laufzettel.html");
             Preferences prefs = Preferences.userRoot().node(Settings.class.getName());
             String ID1 = "pagesize";
             String pagesize = prefs.get(ID1, "101mm 54mm landscape");
-            model.with("pageSize", pagesize);
-            model.with("tests", testsNamedIndex);
-            template.render(model, fos);
+            Map<String, Object> context = new HashMap<>();
+            context.put("pageSize", pagesize);
+            context.put("tests", testsNamedIndex);
+            compiledTemplate.evaluate(fos, context);
+
         } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
