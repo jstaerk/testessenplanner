@@ -190,7 +190,7 @@ public class Laufzettel {
                             "\tfloat:left;\n" +
                             "\twidth:1em;\n" +
                             "\tpadding-top: 4px;\n" +
-                            "\tfont-family:Bitter;\n" +
+                            "\tfont-family:Shadows;\n" +
                             "}\n" +
                             ".clear {\n" +
                             "\tclear:both;\n" +
