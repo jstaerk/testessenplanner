@@ -65,6 +65,7 @@ public class Testessen {
                             "}\n" +
                             ".written {\n" +
                             "\tfont-size:32pt;\n" +
+                            "\tfont-weight:bold;\n" +
                             "\tfont-family:shadows;\n" +
                             "\tcolor:#f23e0e\n" +
                             "}\n" +
@@ -99,8 +100,9 @@ public class Testessen {
                             ".center {\n" +
                             "\ttext-align: center;\n" +
                             "}\n" +
-                            ".head {\n" +
-                            "\n" +
+                            "html,body {\n" +
+                            "\tpadding:0px;\n" +
+                            "\tmargin:0px;\n" +
                             "}\n" +
                             "\n" +
                             "</style>\n" +
@@ -111,7 +113,7 @@ public class Testessen {
                             "   \n" +
                             "    <br class='clear'/>\n" +
                             "    <div class='content'>\n" +
-                            "\t<div class='bigger center'> <span class='printed'>{{tester.function}}</span> <br class='clear'/><span class='written'>{{tester.name}}</span></div>\n" +
+                            "\t<div class='bigger center'> <div class='printed clear'>{{tester.function}}</div><span class='written'>{{tester.name}}</span></div>\n" +
 
                             "</div>\n" +
                             "{% endfor %}\n" +
