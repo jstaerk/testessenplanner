@@ -41,25 +41,25 @@ Neu in Version 2 ist die grafische Oberfläche und der Druck von Namensschildern
 wurde die Software im Frankfurter Testessen "001" am 04.02.2016, Testessen #11 am 16.03.2017  und (Version 2) beim Testessen #25 am 18.02.2023 bei WestendTV.
 
 ## Handbuch
-###Einstellungen
+### Einstellungen
 <img src="./doc/Screenshot_Settings.png" alt="Screenshot der Einstellungen" style="float: right; transform:scale(0.5); margin-left: 10px;" />
 
 Unter Einstellungen kann das Papierformat festgelegt werden, wir bringen einen Labeldrucker mit und drucken auf 101x54mm Labels: Quer für Namenschilder und Hochkant für Laufzettel. Din A5 und Din A4 sind Alternativen.
 
 
 
-###Namensschilder generieren
+### Namensschilder generieren
 <img src="./doc/Screenshot_Badges.png" alt="Screenshot badges" style="float: right; transform:scale(0.5); margin-left: 10px;" />
 Unter Namensschilder gebt pro Zeile einen Namen (bei Labeldrucker: einen Vornamen) ein. Ihr könnt optional mit vertikalem Strich „|“ eine Firma vergeben, also bspw. „Jochen|Orga“ oder „Stefan|Station ABC“. 
 Bei Klick auf Drucken wird eine badge.html-Datei generiert und im Browser zum Drucken geöffnet. Dort muss ggf. die Seiteneinstellung wiederholt werden.
 
-###Vorlagedateien
+### Vorlagedateien
 
 Angelegt wird die Datei „badge-vorlage.twig“, die per Texteditor angepasst werden kann, für die Farbcodes eurer Stadt 
 oder falls bspw. eine andere Datei als Logo dienen soll.
 
 
-###Laufzettel generieren
+### Laufzettel generieren
 <img src="./doc/Screenshot_Laufzettel.png" alt="Screenshot routing slip generation" style="float: right; transform:scale(0.5); margin-left: 10px;" />
 
 Für Laufzettel müssen die Bezeichnungen der Runden, die Bezeichnungen der Stationen und die Tester  (jeweils eine(r) pro Zeile) in die drei Eingabefelder eingegeben werden. Die Namen der „Tester“ können auch Gruppen sein, gibt es zweierteams spricht grundsätzlich nichts gegen den Namen „Testergruppe 5“ und anschließendem Mehrfachdruck der HTML-Datei.
@@ -75,7 +75,7 @@ Weiterhin werden zwei Tabellen erstellt, by_station.csv, die bspw. in LibreOffic
 
 <img src="./doc/Screenshot_CSVs.png" alt="Screenshot spreadsheet in Libreoffice with redacted names for data protection :-)" style="float: right; transform:scale(0.5); margin-left: 10px;" />
 
-##Beiträge
+## Beiträge
 
 Fragen&Kommentare?
 Jochen (Usability Testessen Team Frankfurt) jstaerk@usegroup.de
