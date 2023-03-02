@@ -1,5 +1,5 @@
 # Testessenplanner
-([German version](README.md) of this text)
+([German version](README.de.md) of this text)
 
 ## About
 [Usability Testessen](https://usability-testessen.org/) (~„Usability test diners“) are guerilla usability test events where real people test apps, onlineshops, homepages, physical devices or other artefacts for usability.
