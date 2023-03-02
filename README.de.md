@@ -52,6 +52,7 @@ Unter Einstellungen kann das Papierformat festgelegt werden, wir bringen einen L
 <img src="./doc/Screenshot_Badges.png" alt="Screenshot badges" style="float: right; transform:scale(0.5); margin-left: 10px;" />
 Unter Namensschilder gebt pro Zeile einen Namen (bei Labeldrucker: einen Vornamen) ein. Ihr könnt optional mit vertikalem Strich „|“ eine Firma vergeben, also bspw. „Jochen|Orga“ oder „Stefan|Station ABC“. 
 Bei Klick auf Drucken wird eine badge.html-Datei generiert und im Browser zum Drucken geöffnet. Dort muss ggf. die Seiteneinstellung wiederholt werden.
+<img src="./doc/Screenshot_Laufzettel_HTML.png" alt="Screenshot routing slip HTML output" style="float: right; transform:scale(0.5); margin-left: 10px;" />
 
 ### Vorlagedateien
 
@@ -66,7 +67,6 @@ Für Laufzettel müssen die Bezeichnungen der Runden, die Bezeichnungen der Stat
 
 Die Berechnung erfolgt bis 10 Sekunden keine bessere Lösung gefunden wurde, in der Regel dauert das 10.3 Sekunden. Es gelten dieselben Ressourcen und Vorlagedateien nur heißt die Vorlagedatei in diesem Fall laufzettel-vorlage.twig. Zusätzlich zur HTML-Datei für den Laufzettel (laufzettel.html) wird automatisch auch eine badge.html für die Tester generiert und geöffnet.
 
-<img src="./doc/Screenshot_Laufzettel_HTML.png" alt="Screenshot routing slip HTML output" style="float: right; transform:scale(0.5); margin-left: 10px;" />
 <img src="./doc/Screenshot_Laufzettel_Printpreview.png" alt="Screenshot routing slip print preview" style="float: right; transform:scale(0.5); margin-left: 10px;" />
 
 
