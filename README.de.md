@@ -32,7 +32,7 @@ Erwartet werden im aktuellen Verzeichnis die Dateien „Shadows Into Light regul
 Die JAR-Datei aus der [releases](https://github.com/jstaerk/testessenplanner/releases) Seite kann dann mit einer
 [Java JRE](https://www.azul.com/products/core/) >= version 1.8 wie folgt gestartet werden:
 
-```java --jar testessenPlanner-2.0.0.jar```
+```java -Dfile.encoding=UTF8 --jar testessenPlanner-2.0.0.jar```
 
 <img src="./doc/Screenshot_Main.png" alt="Screenshot des Hauptbildschirms" style="float: right; transform:scale(0.5); margin-left: 10px;" />
 
