@@ -31,7 +31,7 @@ A [Java JRE](https://www.azul.com/products/core/) >= version 1.8 is required.
 By default the Testessen (Frankfurt) corporate identity will be used. Which expects the files "Shadows Into Light regular.ttf", "Bitter regular.ttf" and "logo-UT-Frankfurt.svg" (from Google Drive) in the current directory.
 Once they are placed there the program can be started with a simple
 
-```java --jar testessenPlanner-2.0.0.jar```
+```java -Dfile.encoding=UTF8 --jar testessenPlanner-2.0.0.jar```
 
 <img src="./doc/Screenshot_Main.png" alt="Screenshot main screen" style="float: right; transform:scale(0.5); margin-left: 10px;" />
 
