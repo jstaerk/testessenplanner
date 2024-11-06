@@ -3,7 +3,10 @@ package planner;
 public class QualifiedName {
     public QualifiedName(String line) {
         String[] parts = line.split("\\|");
-        if (parts.length == 1) {
+        if (parts.length == 0) {
+            this.name = "";
+            this.function = "";
+        } else if (parts.length == 1) {
             this.name = parts[0];
             this.function = "";
 
