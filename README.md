@@ -43,7 +43,7 @@ The software was developed for and used at the Frankfurt test dinner "001" on 20
 ### Settings
 <img src="./doc/Screenshot_Settings.png" alt="Screenshot settings" style="float: right; transform:scale(0.5); margin-left: 10px;" />
 
-Under Einstellungen (settings) you can specify the paper format, we bring a label printer and print on 101x54mm labels: landscape for name tags and portrait for dockets. Din A5 and Din A4 are alternatives.
+Under Einstellungen (settings) you can specify the paper format, we bring a label printer and print on 101x54mm labels(almost "30364 Name badge label"): landscape for name tags and portrait for dockets. Din A5 and Din A4 are alternatives.
 
 
 ### Generate Badges
